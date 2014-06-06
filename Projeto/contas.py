@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+# -*- coding: iso8859-1 -*-
 
 from collections import namedtuple
 
@@ -26,7 +26,7 @@ def inserir_contas_movimentos():
     pos = encontrar_posicao(cod)
 
     if pos >= 0:
-        print "C√≥digo j√° existe"
+        print "CÛdigo j· existe"
         return
 
     #ler dados
@@ -48,7 +48,7 @@ def pesquisar_contas():
     pos = encontrar_posicao(cod)
 
     if pos == -1:
-        print "Nao existe conta com esse c√≥digo"
+        print "Nao existe conta com esse cÛdigo"
         return
 
     print "Codigo: ", listaContas[pos].id
@@ -57,11 +57,60 @@ def pesquisar_contas():
     print "Banco: ", listaContas[pos].banco
     print "DataAbertura: ", listaContas[pos].dataabertura
     print "Saldo: ", listaContas[pos].saldo
+    
+def efetuar_transferencia():
+           
+    print "Numero de contas:", len(listaContas)               
+
+    numeroOrigem = input("Qual o numero da conta de origem?")
+    encontrou = False
+    
+    global posOrigem    
+    global posDestino
+    
+   
+    
+   
+    posOrigem = encontrar_posicao(numeroOrigem)
+
+    if posOrigem == -1:
+        print "Nao existe conta com esse cÛdigo"
+        return
+       
+    
+    numeroDestino = input("Qual o numero da conta de destino?")
+    encontrou = False
+    posDestino = None
+    for i in range(len(listaContas)):
+        if listaContas[i].id == numeroDestino:
+            encontrou = True
+            
+            posDestino = i
+            break
+    
+    if not encontrou:
+        print "Conta n„o existe"
+        return        
+        
+    
+    montante = input("Qual o montante a transferir?")
+    
+    saldoOrigem = listaContas[posOrigem].saldo
+    listaContas[posOrigem] = listaContas[posOrigem]._replace(saldo=saldoOrigem-montante)
+    
+    saldoDestino = listaContas[posDestino].saldo
+    listaContas[posDestino] = listaContas[posDestino]._replace(saldo=saldoDestino+montante)
+    
+    print "TransferÍncia efetuada"
+    
+
+                
+    
 
 
 def listar_contas():
     for i in range (len(listaContas)):
-        print "C√≥digo: ", listaContas[i].id
+        print "CÛdigo: ", listaContas[i].id
         print "Tipo: ", listaContas[i].tipo
         print "Descricao: ", listaContas[i].descricao
         print "Banco: ", listaContas[i].banco
@@ -70,29 +119,29 @@ def listar_contas():
   
 
 def eliminar_contas():
-    cod = input ("C√≥digo do conta a eliminar --> ")
+    cod = input ("CÛdigo do conta a eliminar --> ")
     pos = encontrar_posicao(cod)
 
     if pos == -1:
-        print "N√£o existe aluno com esse c√≥digo"
+        print "N„o existe aluno com esse cÛdigo"
         return
 
-    # TODO: Confirmar elimina√ß√£o
+    # TODO: Confirmar eliminaÁ„o
     listaContas.pop(pos)
 
 
     
 def alterar_contas():
-    cod = input ("C√≥digo do conta a alterar --> ")
+    cod = input ("CÛdigo do conta a alterar --> ")
     pos = encontrar_posicao(cod)
 
     if pos == -1:
-        print "N√£o existe conta com esse c√≥digo"
+        print "N„o existe conta com esse cÛdigo"
         return
 
-    # s√≥ altera o nome
+    # sÛ altera o nome
     novotipo = raw_input("Qual o novo tipo de titular? ")
-    novadescricao = raw_input("Qual a nova descri√ß√£o?")
+    novadescricao = raw_input("Qual a nova descriÁ„o?")
     novobanco = raw_input("Qual o banco?")
     novadataabertura = raw_input("Qual a data de abertura?")
     novosaldo = raw_input("Qual o saldo que deseja depositar?")
@@ -127,7 +176,7 @@ def gerir():
 
 
 if __name__ == "__main__":
-    print "Este programa n√£o deve ser executado diretamente"
+    print "Este programa n„o deve ser executado diretamente"
 
 
 

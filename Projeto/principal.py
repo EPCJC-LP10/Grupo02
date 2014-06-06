@@ -30,7 +30,7 @@ while not terminar:
     if op == '1':
         contas.gerir()
     elif op == '2':
-        pass    #por fazer
+        contas.efetuar_transferencia()
     elif op == '0':
         terminar = True
 

@@ -5,7 +5,7 @@ def principal():
     print " **** MENU ****** "
     print
     print "   1. Gestão de Contas"
-    print "   2. "
+    print "   2. Transferencia entre Contas"
     print 
     print "   0. Sair"
     print 
