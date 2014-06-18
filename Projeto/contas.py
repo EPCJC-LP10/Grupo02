@@ -34,7 +34,7 @@ def inserir_contas_movimentos():
     descricao = raw_input("Qual das opcoes?")
     banco = raw_input("Qual a instituicao bancaria?")
     dataabertura = raw_input("Qual o dia de Abertura na instituicao?")
-    saldo = raw_input("Qual o saldo a depositar?")
+    saldo = input("Qual o saldo a depositar?")
     
     
     
@@ -94,8 +94,15 @@ def efetuar_transferencia():
         
     
     montante = input("Qual o montante a transferir?")
+        
+    
+    
     
     saldoOrigem = listaContas[posOrigem].saldo
+    if montante>saldoOrigem:
+        print "Transferência negada" 
+        return
+        
     listaContas[posOrigem] = listaContas[posOrigem]._replace(saldo=saldoOrigem-montante)
     
     saldoDestino = listaContas[posDestino].saldo
@@ -103,11 +110,7 @@ def efetuar_transferencia():
     
     print "Transferência efetuada"
     
-
-                
     
-
-
 def listar_contas():
     for i in range (len(listaContas)):
         print "Código: ", listaContas[i].id
@@ -144,12 +147,18 @@ def alterar_contas():
     novadescricao = raw_input("Qual a nova descrição?")
     novobanco = raw_input("Qual o banco?")
     novadataabertura = raw_input("Qual a data de abertura?")
-    novosaldo = raw_input("Qual o saldo que deseja depositar?")
+    novosaldo = input("Qual o saldo que deseja depositar?")
     
     listaContas[pos] = listaContas[pos]._replace(tipo=novotipo, descricao=novadescricao, banco=novobanco, dataabertura=novadataabertura, saldo=novosaldo)
 
 
-
+def saldo_global():
+    saldo = 0.0
+    
+    for conta in listaContas:
+        saldo = saldo + conta.saldo
+        
+    return saldo
         
 
 def gerir():

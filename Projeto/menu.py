@@ -1,13 +1,13 @@
 # -*- coding: iso8859-1 -*-
 
-def principal():
+def principal(saldoGlobal):
     print
-    print " **** MENU ****** "
-    print
-    print "   1. Gestão de Contas"
-    print "   2. Transferencia entre Contas"
-    print 
-    print "   0. Sair"
+    print " **** MENU *********************************INFORMAÇÕES**** "
+    print "                                      *"
+    print "   1. Gestão de Contas                *  Saldo Global: ", saldoGlobal 
+    print "   2. Transferencia entre Contas      *  " 
+    print "                                      *"
+    print "   0. Sair                            * "
     print 
 
     op = raw_input("Opção: ")

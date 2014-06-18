@@ -25,7 +25,7 @@ ler_ficheiros()
 
 terminar = False
 while not terminar:
-    op = menu.principal()
+    op = menu.principal(contas.saldo_global())
     
     if op == '1':
         contas.gerir()
